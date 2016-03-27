@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+
+.loading{
+	position:fixed;
+	height:100%;
+	width:100%;
+	z-index:99999;
+	background-color:#FFF;
+	}
+.loading_img{
+	margin:auto;
+	width:80px;
+	
+	}
+.loading_img img{
+	height:80px;
+	width:80px;
+	}

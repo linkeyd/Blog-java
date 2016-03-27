@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="../bootstrap-3.2.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap-table-master-2/src/bootstrap-table.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/Manager.css">
+    <link rel="stylesheet" href="../css/dag.css">
+    <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- Respond.js属于异步调用方法所以需要链接服务器才能够启动JQ  AJAX参数 -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="header">
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-default btn-sm GetUser"><span class="glyphicon glyphicon-user "></span>&nbsp;&nbsp;林炜</button>
+        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="system.html"><span class="glyphicon glyphicon-cog"></span> 设置</a></li>
+            <!--<li class="divider"></li>-->
+            <li><a href="#" class="OutLogin"><span class="glyphicon glyphicon-off"></span> 注销</a></li>
+        </ul>
+    </div>
+    <div class="time">2015年 5月5日 周二 14:28</div>
+    <p class="clearfix"></p>
+</div>
+
+<div class="container">
+    <div class="row padding">
+        <ul class="nav nav-tabs">
+            <li role="presentation" ><a href="index.html">首页</a></li>
+            <li role="presentation" class="active"><a href="module.html">模块管理</a></li>
+            <li role="presentation"><a href="history.html">学习管理</a></li>
+            <li role="presentation"><a href="user.html">用户管理</a></li>
+            <li role="presentation"><a href="message.html">留言管理</a></li>
+            <li role="presentation"><a href="system.html">系统设置</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 ">
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" ><a href="module.html">日志管理</a></li>
+                <li role="presentation" class="active"><a href="play.html">轮播管理</a></li>
+                <li role="presentation"><a href="works.html">作品管理</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg" id="append">添加</button>
+            <table id="table-javascript"></table>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- 添加日志 -->
+
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">操作</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form">
+                <div class="row">
+                    <div class="col-sm-12">
+                    <strong>编号:<span id="id">1</span></strong>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col-sm-8">
+                        <label>图片地址:</label>
+                        <input type="text" placeholder="图片地址" class="form-control"  id="img"><small>(地址：i2.tietuku.com)</small>
+                    </div>
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="close">关闭</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="insert">添加</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="alter">修改</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="../js/jquery.min.js"></script>
+<script src="../bootstrap-3.2.0-dist/js/bootstrap.js"></script>
+<script src="../bootstrap-table-master-2/src/bootstrap-table.js"></script>
+<script src="../js/effect.js"></script>
+<script src="../js/dag.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="js/User.js"></script>
+<script>
+
+
+    var json;
+
+    /**
+     *
+     * @type 窗口点击获取JSON对象   {{click .edit: Function, click .remove: Function}}
+     */
+    window.operateEvents = {
+        'click .edit': function (e, value, row, index) {
+            json = row;
+            $("#id").html(json.id);
+            $("#img").val(json.img);
+            console.log(value, row, index);
+
+
+        },
+        'click .remove': function (e, value, row, index) {
+            json=row;
+            sumbit_ajax.post_ajax("../../DeleteCarousel",{id:json.id},callback);
+            console.log(value, row, index);
+        }
+    };
+    /**
+     * 生成bootstrap Table
+     */
+
+    $('#table-javascript').bootstrapTable({
+        method: 'get',
+        url: '../../SelectCarousel',
+        cache: false,
+        height: 400,
+        striped: true,
+        pagination: true,
+        pageSize: 10,
+        pageList: [10, 25, 50, 100, 200],
+        search: true,
+        showColumns: true,
+        showRefresh: true,
+        minimumCountColumns: 2,
+        clickToSelect: true,
+        columns: [{
+            field: 'state',
+            checkbox: true
+        }, {
+            field: 'id',
+            title: 'Id',
+            align: 'right',
+            valign: 'bottom',
+            sortable: true
+        }, {
+            field: 'img',
+            title: 'Img',
+            align: 'center',
+            valign: 'middle',
+            sortable: true,
+            formatter: priceFormatter
+        },  {
+            field: 'operate',
+            title: 'Item Operate',
+            align: 'center',
+            valign: 'middle',
+            clickToSelect: false,
+            formatter: operateFormatter,
+            events: operateEvents
+        }]
+    });
+
+
+    /**
+     *  生成两个编辑器
+     * @param value
+     * @param row
+     * @param index
+     * @returns {string}
+     */
+    function operateFormatter(value, row, index) {
+        return [
+
+            '<a class="edit ml10" href="javascript:void(0)" id="Edit" title="Edit" data-toggle="modal" data-target=".bs-example-modal-lg">',
+            '<i class="glyphicon glyphicon-edit"></i>',
+            '</a> &nbsp;&nbsp;',
+            '<a class="remove ml10" href="javascript:void(0)" title="Remove" id="delete">',
+            '<i class="glyphicon glyphicon-remove"></i>',
+            '</a>'
+        ].join('');
+    }
+    function priceFormatter(value, row, index){
+        return [
+            '<img src='+value+' style="width:150px;height:150px;" >'
+        ]
+    }
+    function callback(data)
+    {
+        if(data)
+        {
+            $('#table-javascript').bootstrapTable('load',data);
+            $(window).dag("操作成功");
+        }
+        else{
+            $(window).dag("操作失误，请检查数据库中的数据。")
+        }
+    }
+
+    $("#insert").click(function()
+    {
+        sumbit_ajax.post_ajax("../../AddCarousel",{img:$("#img").val()},callback)
+    })
+
+    function init(){
+
+        $(".time").now_time();
+    }
+    init();
+
+    $("#alter").click(function(){
+        sumbit_ajax.post_ajax("../../AlterCarousel",{id:json.id,img:$("#img").val()},callback);
+    })
+
+
+</script>
+<script src="js/Result.js"></script>
+</body>
+</html>

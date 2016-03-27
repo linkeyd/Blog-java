@@ -1,0 +1,13 @@
+﻿[
+ {
+        "id": 0,
+	"title":"HTML布局div OR table",
+        "contenct": "<p>这次给大家简要介绍以下DIV布局的要点，首先我们来简要介绍以下DIV结构。<br>说到DIV我们就不得不说到上一代布局标准TABLE布局，TABLE他在DIV没有普及的时候有着十分强大的优势，它能够将一张切割好的的图片进行快速的定位。不过久而久之人们慢慢的使用的过程中就发现了TABLE布局存在的缺陷。<br>1.程序过于庞大TABLE使一个页面像是一个臃肿的巨人层级太多，行动起来非常的不变导致页面加载变得异常缓慢.<br>2.代码可修改的难度太大。我们在一个页面中看到的都是一堆TABLE，而且TR和TD存在的修改padding和margin之间非常的难修改<br>这时候DIV出现使得我们的代码编写变得更加的便捷TABLE全局布局几乎被DIV取代。不过这时候我们又面临了一个问题，div是一个盒子那么我们要怎么样来定义这些盒子的布局，这里我们可以从一前端框架中得到很好的解答,bootstrap框架，一群推特工程师在github中推广出来的前端框架。<br>他们的理念是将盒子布局看成一个表格，将一个DIV看成一个TABLE的TR，内部的DIV看成TD，TD看成百分比一共为12个，这就是著名的栅栏系统，无论是3333还是444，相加都是等于12，而这个12刚好也是一行。这样有利有页面的快速定位。<br>然后利用FLOAT的特点将它们进行左右浮动不过这时候有一点要注意了 FLOAT 浮动的时候子盒子会脱离父级盒子的控制。<br>所以要加一个clear:both的CLASS让父级盒子能够随着子盒子的增大而自动增大，这样子在写下一个列的时候盒子就不会因为同级的盒子没有高度而导致盒子层级叠加。</p>",
+        "contenct": "<p>这次给大家简要介绍以下DIV布局的要点，首先我们来简要介绍以下DIV结构。<br>说到DIV我们就不得不说到上一代布局标准TABLE布局，TABLE他在DIV没有普及的时候有着十分强大的优势，它能够将一张切割好的的图片进行快速的定位。不过久而久之人们慢慢的使用的过程中就发现了TABLE布局存在的缺陷。<br>1.程序过于庞大TABLE使一个页面像是一个臃肿的巨人层级太多，行动起来非常的不变导致页面加载变得异常缓慢.<br>2.代码可修改的难度太大。我们在一个页面中看到的都是一堆TABLE，而且TR和TD存在的修改padding和margin之间非常的难修改<br>这时候DIV出现使得我们的代码编写变得更加的便捷TABLE全局布局几乎被DIV取代。不过这时候我们又面临了一个问题，div是一个盒子那么我们要怎么样来定义这些盒子的布局，这里我们可以从一前端框架中得到很好的解答,bootstrap框架，一群推特工程师在github中推广出来的前端框架。<br>他们的理念是将盒子布局看成一个表格，将一个DIV看成一个TABLE的TR，内部的DIV看成TD，TD看成百分比一共为12个，这就是著名的栅栏系统，无论是3333还是444，相加都是等于12，而这个12刚好也是一行。这样有利有页面的快速定位。<br>然后利用FLOAT的特点将它们进行左右浮动不过这时候有一点要注意了 FLOAT 浮动的时候子盒子会脱离父级盒子的控制。<br>所以要加一个clear:both的CLASS让父级盒子能够随着子盒子的增大而自动增大，这样子在写下一个列的时候盒子就不会因为同级的盒子没有高度而导致盒子层级叠加。</p>",
+        "time": "星期二 2015-4-26",
+	"img": "img/150219907.jpg",
+	"pro":"<p>&lt;div class=&quot;row&quot;&gt;</p><p>&lt;div class=&quot;col-4&quot;&gt;&lt;/div&gt;</p><p>&lt;div class=&quot;col-4&quot;&gt;&lt;/div&gt;</p><p>&lt;div class=&quot;col-4&quot;&gt;&lt;/div&gt;</p><p>&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;</p><p>&lt;/div&gt;</p><p><br/></p><p>/*css style*/</p><p><br/></p><p>.row{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;display:table;</p><p>}</p><p>.row .col-4{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;float:left;<br/></p><p>&nbsp;&nbsp;&nbsp;&nbsp;padding:15px;<br/></p><p>&nbsp;&nbsp;&nbsp;&nbsp;width:33.333%;<br/></p><p>}</p><p>.clear{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;clear:both;<br/></p><p>}</p>"
+    }
+]
+
+

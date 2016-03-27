@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" href="../bootstrap-3.2.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/Manager.css">
+    <link rel="stylesheet" href="../css/dag.css">
+    <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- Respond.js属于异步调用方法所以需要链接服务器才能够启动JQ  AJAX参数 -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="header">
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-default btn-sm GetUser"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;林炜</button>
+        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="system.html"><span class="glyphicon glyphicon-cog"></span> 设置</a></li>
+            <!--<li class="divider"></li>-->
+            <li><a href="#" class="OutLogin"><span class="glyphicon glyphicon-off"></span> 注销</a></li>
+        </ul>
+    </div>
+    <div class="time">2015年 5月5日 周二 14:28</div>
+    <p class="clearfix"></p>
+</div>
+
+<div class="container">
+    <div class="row padding">
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="index.html">首页</a></li>
+            <li role="presentation"><a href="module.html">模块管理</a></li>
+            <li role="presentation"><a href="history.html">学习管理</a></li>
+            <li role="presentation"><a href="user.html">用户管理</a></li>
+            <li role="presentation"><a href="message.html">留言管理</a></li>
+            <li role="presentation"><a href="system.html">系统设置</a></li>
+        </ul>
+    </div>
+    <div class="row padding">
+        <div class="col-sm-6 col-md-3 user">
+            <img src="../img/64380cd7912397ddf9f4bdb05a82b2b7d1a287f0.jpg" class="imgs img-thumbnail">
+            <br> <br>
+            <p class="GetUser"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;管理员:林炜</p>
+            <p><span class="glyphicon glyphicon-dashboard"></span>&nbsp;&nbsp;登陆时间: 2015-5-5 14:53</p>
+            <p><span class="glyphicon glyphicon-sound-7-1"></span>&nbsp;&nbsp;登录地址:192.168.1.1</p>
+            <p><a href="#"><span class="glyphicon glyphicon-cog"></span> 设置</a><a href="#" class="OutLogin"><span class="glyphicon glyphicon-off"></span> 注销</a></p>
+        </div>
+        <div class="col-sm-6 col-md-8 col-md-offset-1">
+            <table class="table table-hover table-bordered table-striped data ">
+                <tr>
+                    <th>用户</th>
+                    <th>登陆IP</th>
+                    <th>登陆时间</th>
+                </tr>
+                <tr>
+                    <td>林炜</td>
+                    <td>192.168.1.1</td>
+                    <td>2015-5-5 18:23</td>
+                </tr>
+                <tr>
+                    <td>林炜</td>
+                    <td>192.168.1.1</td>
+                    <td>2015-5-5 18:23</td>
+                </tr>
+                <tr>
+                    <td>林炜</td>
+                    <td>192.168.1.1</td>
+                    <td>2015-5-5 18:23</td>
+                </tr>
+                <tr>
+                    <td>林炜</td>
+                    <td>192.168.1.1</td>
+                    <td>2015-5-5 18:23</td>
+                </tr>
+                <tr>
+                    <td>林炜</td>
+                    <td>192.168.1.1</td>
+                    <td>2015-5-5 18:23</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br><br>
+    <div class="row padding">
+        <div id="main" style="height: 400px" class="col-xs-12"></div>
+    </div>
+
+</div>
+
+
+<!--<div class="input-group date form_date" data-date="" data-date-format="" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+    <input class="form-control time" size="16" type="text" value="" readonly>
+			 <span class="input-group-addon remove">
+			 <span class="glyphicon glyphicon-remove"></span>
+			 </span>
+			 <span class="input-group-addon">
+             <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+</div>-->
+<!--<div id="main" style="height:400px; nowwidth:800px"></div>-->
+<script src="../js/jquery.min.js"></script>
+<script src="../bootstrap-3.2.0-dist/js/bootstrap.js"></script>
+<script src="../bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
+<script src="../bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../build/dist/echarts.js"></script>
+<script src="../js/effect.js"></script>
+<script src="../js/dag.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="js/User.js"></script>
+<script>
+    function init(){
+        statistocs();
+        $(".time").now_time()
+    }
+    init();
+</script>
+</body>
+</html>

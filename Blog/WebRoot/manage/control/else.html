@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="../bootstrap-3.2.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap-table-master-2/src/bootstrap-table.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/Manager.css">
+    <link rel="stylesheet" href="../css/dag.css">
+
+    <script type="text/javascript" charset="utf-8" src="Edit/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="Edit/ueditor.all.min.js"> </script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="Edit/lang/zh-cn/zh-cn.js"></script>
+    <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- Respond.js属于异步调用方法所以需要链接服务器才能够启动JQ  AJAX参数 -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="header">
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-default btn-sm GetUser"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;林炜</button>
+        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="system.html"><span class="glyphicon glyphicon-cog"></span> 设置</a></li>
+            <!--<li class="divider"></li>-->
+            <li><a href="#" class="OutLogin"><span class="glyphicon glyphicon-off"></span> 注销</a></li>
+        </ul>
+    </div>
+    <div class="time">2015年 5月5日 周二 14:28</div>
+    <p class="clearfix"></p>
+</div>
+
+<div class="container">
+    <div class="row padding">
+        <ul class="nav nav-tabs">
+            <li role="presentation" ><a href="index.html">首页</a></li>
+            <li role="presentation" ><a href="module.html">模块管理</a></li>
+            <li role="presentation" class="active"><a href="history.html">学习管理</a></li>
+            <li role="presentation"><a href="user.html">用户管理</a></li>
+            <li role="presentation"><a href="message.html">留言管理</a></li>
+            <li role="presentation"><a href="system.html">系统设置</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 ">
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" ><a href="history.html">历史管理</a></li>
+                <li role="presentation" ><a href="geography.html">语言管理</a></li>
+                <li role="presentation" class="active"><a href="else.html">其他管理</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg" id="append">添加</button>
+            <table id="table-javascript"></table>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- 添加日志 -->
+
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">操作</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>标题</label>
+                            <input type="text" placeholder="标题" class="form-control" id="title">
+                        </div>
+                        <div class="col-sm-6">
+                            <label>图片地址</label>
+                            <input type="text" placeholder="图片地址" class="form-control" id="img">
+                        </div>
+                        <div class="col-sm-12">
+                            <label>内容</label>
+                            <script id="editor" type="text/plain" style="width:100%;height:500px;"></script>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="insert">添加日志</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="alter">修改日志</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="../js/jquery.min.js"></script>
+<script src="../bootstrap-3.2.0-dist/js/bootstrap.js"></script>
+<script src="../bootstrap-table-master-2/src/bootstrap-table.js"></script>
+<script src="../js/dag.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="js/User.js"></script>
+<script src="../js/effect.js"></script>
+<script>
+
+
+    var json;
+
+    /**
+     *
+     * @type 窗口点击获取JSON对象   {{click .edit: Function, click .remove: Function}}
+     */
+    window.operateEvents = {
+        'click .edit': function (e, value, row, index) {
+            json=row;
+            $("#title").val(json.title);
+            $("#img").val(json.img);
+            UE.getEditor('editor').setContent(json.contenct);
+
+            console.log(value, row, index);
+        },
+        'click .remove': function (e, value, row, index) {
+            json= row;
+            sumbit_ajax.post_ajax("../../DeleteRest",{id:json.id},callback);
+            console.log(value, row, index);
+        }
+    };
+    /**
+     * 生成bootstrap Table
+     */
+
+    $('#table-javascript').bootstrapTable({
+        method: 'get',
+        url: '../../SelectRest',
+        cache: false,
+        height: 400,
+        striped: true,
+        pagination: true,
+        pageSize: 10,
+        pageList: [10, 25, 50, 100, 200],
+        search: true,
+        showColumns: true,
+        showRefresh: true,
+        minimumCountColumns: 2,
+        clickToSelect: true,
+        columns: [{
+            field: 'state',
+            checkbox: true
+        }, {
+            field: 'id',
+            title: 'Id',
+            align: 'right',
+            valign: 'bottom',
+            sortable: true
+        }, {
+            field: 'title',
+            title: 'Title',
+            align: 'center',
+            valign: 'middle',
+            sortable: true,
+//            formatter: nameFormatter
+        },  {
+            field: 'time',
+            title: 'Time',
+            align: 'left',
+            valign: 'top',
+            sortable: true,
+//            formatter: priceFormatter,
+//            sorter: priceSorter
+        },{
+            field: 'contenct',
+            title: 'Content',
+            align: 'left',
+            valign: 'top',
+            sortable: true,
+//            formatter: priceFormatter,
+//            sorter: priceSorter
+        }, {
+            field: 'img',
+            title: 'Img',
+            align: 'left',
+            valign: 'top',
+            sortable: true,
+           formatter: priceFormatter,
+//            sorter: priceSorter
+        },{
+            field: 'operate',
+            title: 'Item Operate',
+            align: 'center',
+            valign: 'middle',
+            clickToSelect: false,
+            formatter: operateFormatter,
+            events: operateEvents
+        }]
+    });
+
+
+    /**
+     *  生成两个编辑器
+     * @param value
+     * @param row
+     * @param index
+     * @returns {string}
+     */
+    function operateFormatter(value, row, index) {
+        return [
+
+            '<a class="edit ml10" href="javascript:void(0)"  title="Edit" id="Edit" data-toggle="modal" data-target=".bs-example-modal-lg">',
+            '<i class="glyphicon glyphicon-edit"></i>',
+            '</a> &nbsp;&nbsp;',
+            '<a class="remove ml10" href="javascript:void(0)" title="Remove">',
+            '<i class="glyphicon glyphicon-remove"></i>',
+            '</a>'
+        ].join('');
+    }
+    function priceFormatter(value, row, index){
+        return [
+            '<img src='+value+' style="width:150px;height:150px;" >'
+        ]
+    }
+    function callback(data)
+    {
+        if(data)
+        {
+            $(window).dag("操作成功");
+            $('#table-javascript').bootstrapTable('load',data);
+            setContent("");
+        }
+        else{
+            $(window).dag("操作失败，请检查数据库");
+        }
+    }
+
+    $("#insert").click(function(){
+        var content =getContent();
+        sumbit_ajax.post_ajax("../../AddRest",{title:$("#title").val(),img:$("#img").val(),contenct:content,time:$(".time").html()},callback);
+    });
+    $("#alter").click(function(){
+        sumbit_ajax.post_ajax("../../AlterRest",{title:$("#title").val(),img:$("#img").val(),contenct:getContent(),time:$(".time").html(),id:json.id},callback);
+    })
+
+
+
+
+
+
+</script>
+
+<script type="text/javascript">
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('editor');
+
+
+    function isFocus(e){
+        alert(UE.getEditor('editor').isFocus());
+        UE.dom.domUtils.preventDefault(e)
+    }
+    function setblur(e){
+        UE.getEditor('editor').blur();
+        UE.dom.domUtils.preventDefault(e)
+    }
+    function insertHtml() {
+        var value = prompt('插入html代码', '');
+        UE.getEditor('editor').execCommand('insertHtml', value)
+    }
+    function createEditor() {
+        enableBtn();
+        UE.getEditor('editor');
+    }
+    function getAllHtml() {
+        alert(UE.getEditor('editor').getAllHtml())
+    }
+    function getContent() {
+        return UE.getEditor('editor').getContent();
+    }
+    function getPlainTxt() {
+        var arr = [];
+        arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
+        arr.push("内容为：");
+        arr.push(UE.getEditor('editor').getPlainTxt());
+        alert(arr.join('\n'))
+    }
+    function setContent(isAppendTo) {
+
+        UE.getEditor('editor').setContent('', isAppendTo);
+
+    }
+    function setDisabled() {
+        UE.getEditor('editor').setDisabled('fullscreen');
+        disableBtn("enable");
+    }
+
+    function setEnabled() {
+        UE.getEditor('editor').setEnabled();
+        enableBtn();
+    }
+
+    function getText() {
+        //当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
+        var range = UE.getEditor('editor').selection.getRange();
+        range.select();
+        var txt = UE.getEditor('editor').selection.getText();
+        alert(txt)
+    }
+
+    function getContentTxt() {
+        var arr = [];
+        arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
+        arr.push("编辑器的纯文本内容为：");
+        arr.push(UE.getEditor('editor').getContentTxt());
+        alert(arr.join("\n"));
+    }
+    function hasContent() {
+        var arr = [];
+        arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
+        arr.push("判断结果为：");
+        arr.push(UE.getEditor('editor').hasContents());
+        alert(arr.join("\n"));
+    }
+    function setFocus() {
+        UE.getEditor('editor').focus();
+    }
+    function deleteEditor() {
+        disableBtn();
+        UE.getEditor('editor').destroy();
+    }
+    function disableBtn(str) {
+        var div = document.getElementById('btns');
+        var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
+        for (var i = 0, btn; btn = btns[i++];) {
+            if (btn.id == str) {
+                UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
+            } else {
+                btn.setAttribute("disabled", "true");
+            }
+        }
+    }
+    function enableBtn() {
+        var div = document.getElementById('btns');
+        var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
+        for (var i = 0, btn; btn = btns[i++];) {
+            UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
+        }
+    }
+
+    function getLocalData () {
+        alert(UE.getEditor('editor').execCommand( "getlocaldata" ));
+    }
+
+    function clearLocalData () {
+        UE.getEditor('editor').execCommand( "clearlocaldata" );
+        alert("已清空草稿箱")
+    }
+    function init(){
+
+        $(".time").now_time()
+    }
+    init();
+</script>
+<script src="js/Result.js"></script>
+
+</body>
+</html>

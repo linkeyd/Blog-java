@@ -1,0 +1,53 @@
+body,html{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: '微软雅黑';
+}
+.header{
+    width: 100%;
+    background-color:#3E3F3F;
+    box-shadow:#000000 0 0 4px;
+}
+.header div{
+    padding: 5px 15px;
+    float:right;
+}
+.time{
+    color: #ffffff;
+    line-height: 2.2em;
+}
+.navs{
+    padding: 45px auto;
+}
+.imgs{
+    height: 100%;
+    width: 100%;
+}
+.padding{
+    padding: 15px;
+}
+.user{
+    background-color: #222628;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: #07f6bf 0 0 15px;
+}
+.user p{
+    color: #ffffff;
+   padding-left:15px;
+}
+.user p a{
+    color: #ffffff;
+    padding-right:15px;
+}
+.user p a:hover{
+    color: #07f6bf;
+}
+@media (max-width: 768px) {
+    .data{
+        margin: 35px auto;
+        border-radius: 5px;
+    }
+}

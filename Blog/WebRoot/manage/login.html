@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap-3.2.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-3.2.0-dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="bootstrap-3.2.0-dist/css/bootstrap-theme.css.map">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/dag.css">
+    <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- Respond.js属于异步调用方法所以需要链接服务器才能够启动JQ  AJAX参数 -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="warp">
+    <div class="inner">
+        <div class="head">管理员登入界面</div>
+        <form class="form-horizontal">
+            <div class="form-group has-feedback">
+
+                <div class="col-sm-8 col-sm-offset-2">
+                    <div class="input-group lined">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                        <input type="text" class="form-control" placeholder="Username" id="Username">
+                    </div>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="form-group has-feedback">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <div class="input-group lined">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+                        <input type="password"  class="form-control" placeholder="Password" id="Password">
+                    </div>
+                    <span class="glyphicon glyphicon-remove
+ form-control-feedback" aria-hidden="true"></span>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-sm-4 col-sm-offset-4 padding">
+            <button type="button" class="btn btn-primary btn-md btn-block" id="logins">登入</button>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="bootstrap-3.2.0-dist/js/bootstrap.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="js/dag.js" charset="utf-8"></script>
+<script src="js/ajax.js" charset="utf-8"></script>
+<script src="js/post_login.js" charset="utf-8"></script>
+
+</body>
+</html>

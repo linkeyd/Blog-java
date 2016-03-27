@@ -1,0 +1,33 @@
+﻿[
+
+    {
+        "id": 1,
+        "title": "通往明日之爱",
+        "url": "http://www.tudou.com/programs/view/Tj5BnwG5Qcw/",
+        "img": "http://i2.tietuku.com/2b554542b5e39d48.png",
+        "content": "《通往明日之爱》讲述的是日本的一家知名时尚公司与中方合作，举行TGC中国时装盛会的故事。在举办此次活动过程中，因工作原因产生了情感纠葛，但最终协力完成了艰巨的任务。"
+    },
+    {
+        "id": 1,
+        "title": "Magic OS",
+        "url": "http://wifi.mzzo.net",
+        "img": "http://i2.tietuku.com/169d6d6f79481de9.jpg",
+        "content": "MagciOS是依托于魔舟公司智能WiFi领域积累的经验和强大的云平台,独立自主研发的路由器管理及广告系统,为广大商家提供更多的营销选择，同时提供路由器的深度定制与开发服务。"
+    },
+        {
+        "id": 1,
+        "title": "EZ-SMART",
+        "url": "http://www.ezsmart.cn",
+        "img": "img/20150417165728.jpg",
+        "content": "光速达物联网科技公司旗下EZ—Smart门店模拟智能家居居住环境，贴近市民生活，为市民展现OMP对象控制平台、自动控制技术、感应技术、网络控制技术提供智能家居解决方案。"
+    },
+    {
+        "id": 1,
+        "title": "EZ-SMART",
+        "url": "http://www.ezsmart.cn/mezsmart/index.html",
+        "img": "img/20150417165648.jpg",
+        "content": "光速达物联网科技公司旗下EZ—Smart门店模拟智能家居居住环境，贴近市民生活，为市民展现OMP对象控制平台、自动控制技术、感应技术、网络控制技术提供智能家居解决方案。"
+    }
+
+
+]

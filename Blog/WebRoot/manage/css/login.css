@@ -1,0 +1,42 @@
+body,html{
+    margin: auto;
+    padding:0px;
+    font-family: 微软雅黑;
+    width: 100%;
+    height: 100%;
+    background:#000000 url("../img/64380cd7912397ddf9f4bdb05a82b2b7d1a287f0.jpg") no-repeat;
+    background-size: 100%;
+    -webkit-background-size: 100%;
+    -o-background-size: 100%;
+}
+
+.warp{
+    position: relative;
+    top: 25%;
+    margin:auto;
+    background-color:rgba(255, 255, 255, 0.46);
+    box-shadow: #A2A2A6 0 0 5px;
+    border-radius: 5px;
+    width: 500px;
+    padding: 15px;
+}
+@media (max-width: 768px) {
+    .warp{
+        width: 100%;
+    }
+}
+.inner{
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 15px;
+}
+.head{
+    text-align: center;
+    font-size: 1.4em;
+    padding: 15px;
+}
+.padding{
+    padding: 15px;
+}

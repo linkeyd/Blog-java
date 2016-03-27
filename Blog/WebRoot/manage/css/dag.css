@@ -1,0 +1,58 @@
+@charset "utf-8";
+/* CSS Document */
+
+.dag{
+
+    background: #333;
+    background: rgba(53, 52, 52, 0.55);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+}
+.dag_hint{
+    position: relative;
+    top: 35%;
+    margin: auto;
+    background: white;
+    border-radius: 5px;
+    box-shadow : #3e401c 2px 2px 10px;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    display: none;
+    opacity: 1;
+}
+@media (min-width:768px) {
+    .dag_hint{
+        width: 25%;
+    }
+}
+@media (min-width:1200px) {
+    .dag_hint{
+        width: 15%;
+    }
+}
+.dag_conten{
+    font-family: "微软雅黑";
+
+}
+.dag_button{
+    font-family: "微软雅黑";
+    border-radius: 5px;
+    padding: 8px 20px;
+    border: #46b8da;
+    background: #5bc0de;
+    cursor: pointer;
+    -moz-transition:background-color .3s ease-in;
+    -webkit-transition:background-color .3s ease-in;
+    -o-transition:background-color .3s ease-in;
+    -ms-transition:background-color .3s ease-in;
+    transition:background-color .3s ease-in;
+}
+.dag_button:hover{
+    border: #337ab7;
+    background: #2e6da4;
+}
